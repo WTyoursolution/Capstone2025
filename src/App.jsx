@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import "./App.css";
-import { createPosts, deletePosts, scanPosts } from "./dynamo";
-import { Button } from "react-bootstrap";
+import { createPosts, deletePosts, scanPosts} from "./dynamo";
 import PostModal from "./components/PostsModal";
 import Post from "./components/Post";
 
@@ -43,7 +42,6 @@ function App() {
     setShow(false); //optionally close modal
   }
 
-  //TODO ADD ONCHANGE
   function handleChange(e) {
     const { name, value } = e.target;
     setForm((prev) => ({
@@ -55,7 +53,7 @@ function App() {
   return (
     <>
       <div className="flex justify-center items-center p-8">
-        <div className="text-center p-4 max-w-lg bg-white rounded shadow ">
+        <div className="divBg text-center p-4 max-w-lg rounded shadow ">
           <h1 className="mb-4">What line of code (or moment) stuck with you?</h1>
           <p className="">
             As we reach the end of the 2025 November cohort Level-3, take a
@@ -80,14 +78,14 @@ function App() {
         onChange={handleChange}
       />
       {posts.length === 0 ? (
-        <h2 className="text-center">
+        <h2 className="text-center text-white ">
           Unfortunately, no one has anything to share at this time!
         </h2>
       ) : (
         <div className="flex flex-wrap justify-center">
-          {posts.map((post) => (
+          {posts.map((post, index) => (
             <div key={post.id} className="relative">
-              <Post post={post} />
+              <Post post={post} index={index} />
               <button
                 onClick={() => handleDelete(post.id)}
                 className="absolute hover:bg-gray-200 top-2 right-2 bg-gray-100 text-black shadow-[4px_4px_0px_#d4a017] text-xs px-2 py-1 rounded "

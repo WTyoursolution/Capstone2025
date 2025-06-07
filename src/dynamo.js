@@ -1,6 +1,10 @@
-import { DynamoDBClient} from "@aws-sdk/client-dynamodb";
-import { DeleteCommand, DynamoDBDocumentClient, PutCommand, ScanCommand } from "@aws-sdk/lib-dynamodb";
-
+import { DynamoDBClient } from "@aws-sdk/client-dynamodb";
+import {
+  DeleteCommand,
+  DynamoDBDocumentClient,
+  PutCommand,
+  ScanCommand,
+} from "@aws-sdk/lib-dynamodb";
 
 const POSTS = "posts";
 
@@ -17,14 +21,14 @@ const docClient = DynamoDBDocumentClient.from(client);
 //SCAN
 
 export async function scanPosts() {
-    const{ Items } = await docClient.send(new ScanCommand ({TableName: POSTS}))
-    return Items || [];
+  const { Items } = await docClient.send(new ScanCommand({ TableName: POSTS }));
+  return Items || [];
 }
 
-export async function createPosts(post){
-await docClient.send(new PutCommand({TableName: POSTS, Item: post}))
+export async function createPosts(post) {
+  await docClient.send(new PutCommand({ TableName: POSTS, Item: post }));
 }
 
-export async function deletePosts(id){
-    await docClient.send(new DeleteCommand({TableName: POSTS, Key: { id } }));
+export async function deletePosts(id) {
+  await docClient.send(new DeleteCommand({ TableName: POSTS, Key: { id } }));
 }

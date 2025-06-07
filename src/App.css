@@ -1,18 +1,24 @@
 @import "tailwindcss";
 
 body {
-   background-color: #f8f4e3;
+   background-color: black;
     }
 
 
 .postnote:hover {
-    background: #fbf700;
+    /* background: #fbf700; */
     color: #000;
 }
 
 .postnote {
-    background: #f4f13e;
+    /* background: #f4f13e; */
     font-family: 'Courier New', Courier, monospace;
     font-size: 1.2rem;
     cursor: pointer;
+}
+
+.divBg {
+    background-color: blue;
+    color: white;
+    
 }
